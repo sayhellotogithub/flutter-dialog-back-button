@@ -13,16 +13,17 @@ class TwoPage extends StatefulWidget {
 class _TwoPageState extends State<TwoPage> {
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-        child: PageUtil.buildPage(
-            _buildBody(),
-            CommonTitleWidget(
-              title: "Navigator 2.0 Two Page",
-              leftClick: () {
-                AppRouterUtil.popPage(context);
-              },
-            )),
-        onWillPop: _showDialog);
+    return BackButtonListener(
+      child: PageUtil.buildPage(
+          _buildBody(),
+          CommonTitleWidget(
+            title: "Navigator 2.0 Two Page",
+            leftClick: () {
+              AppRouterUtil.popPage(context);
+            },
+          )),
+      onBackButtonPressed: _onBackPressed,
+    );
   }
 
   Widget _buildBody() {

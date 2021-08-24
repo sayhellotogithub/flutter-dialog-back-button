@@ -49,7 +49,7 @@ class _MyAppNavigator2 extends State<MyApp> {
           ChangeNotifierProvider(create: (_) => appStateManagerProvider)
         ],
         child: MaterialApp.router(
-          backButtonDispatcher: backButtonDispatcher,
+          backButtonDispatcher: RootBackButtonDispatcher(),
           theme:
               ThemeData(primaryColor: Colors.white, accentColor: Colors.white),
           routeInformationParser: appRouteInfoParser,
