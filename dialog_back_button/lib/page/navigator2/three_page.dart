@@ -3,36 +3,37 @@ import 'package:dialog_back_button/route/app_router_util.dart';
 import 'package:dialog_back_button/util/page_util.dart';
 import 'package:flutter/material.dart';
 
-class TwoPage extends StatefulWidget {
+class ThreePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _TwoPageState();
+    return _ThreePageState();
   }
 }
 
-class _TwoPageState extends State<TwoPage> {
+class _ThreePageState extends State<ThreePage> {
   @override
   Widget build(BuildContext context) {
-    return BackButtonListener(
-      child: PageUtil.buildPage(
-          _buildBody(),
-          CommonTitleWidget(
-            title: "Navigator 2.0 Two Page",
-            leftClick: () {
-              AppRouterUtil.popPage(context);
-            },
-          )),
-      onBackButtonPressed: _onBackPressed,
-    );
+    return PageUtil.buildPage(
+        _buildBody(),
+        CommonTitleWidget(
+          title: "Navigator 2.0 four Page",
+          leftClick: () {
+            AppRouterUtil.popPage(context);
+          },
+        ));
   }
 
   Widget _buildBody() {
-    return Center(
-      child: Text("This is two"),
-    );
+    return WillPopScope(
+        child: Center(
+          child: Text("WillPopScope 失效"),
+        ),
+        onWillPop: () {
+          return _showDialog();
+        });
   }
 
-  Future<bool> _onBackPressed() async {
+  Future<bool> _showDialog() async {
     var result = await showDialog<bool>(
       context: context,
       builder: (context) => new AlertDialog(
@@ -52,9 +53,9 @@ class _TwoPageState extends State<TwoPage> {
       ),
     );
     if (result == true) {
-      return Future.value(false);
-    } else {
       return Future.value(true);
+    } else {
+      return Future.value(false);
     }
   }
 }

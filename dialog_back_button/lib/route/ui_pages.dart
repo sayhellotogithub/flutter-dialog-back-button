@@ -4,6 +4,8 @@ import 'index.dart';
 
 const String onePath = '/one';
 const String twoPath = '/two';
+const String threePath = '/three';
+const String fourPath = "/four";
 
 class PageConfiguration {
   final String key;
