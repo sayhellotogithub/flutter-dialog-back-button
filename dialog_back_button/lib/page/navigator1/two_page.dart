@@ -16,6 +16,9 @@ class _TwoPageState extends State<TwoPage> {
         _buildBody(),
         CommonTitleWidget(
           title: "Navigator1.0 Two Page",
+          leftClick: () {
+            Navigator.pop(context);
+          },
         ));
   }
 
